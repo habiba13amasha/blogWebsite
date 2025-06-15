@@ -1,15 +1,11 @@
 # Backend
 /Backend/node_modules/
 /Backend/.env
-/Backend/dbConfig.js
-/Backend/package-lock.json
 /Backend/images/
 
 # Frontend
 /Frontend/blogWebsite/node_modules/
 /Frontend/blogWebsite/.env
-/Frontend/blogWebsite/package-lock.json
-/Frontend/blogWebsite/public/
 
 # General
 **/.DS_Store

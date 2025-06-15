@@ -11,7 +11,10 @@
     {
       "src": "Backend/server.js",
       "use": "@vercel/node",
-      "config": { "runtime": "nodejs18.x" }
+      "config": {
+        "includeFiles": ["Backend/**"],
+        "maxLambdaSize": "50mb"
+      }
     }
   ],
   "routes": [
@@ -21,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Frontend/blogWebsite/dist/$1"
+      "dest": "Frontend/blogWebsite/dist/index.html"
     }
   ]
 }
