@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
+import helloRoute from './routes/hello.js';
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -15,29 +16,25 @@ app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   })
 );
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
 app.use(express.json());
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+
 
 // Routes
+app.use('/api/hello', helloRoute);
 
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 // Database connection
-
 connectDB();
 
-//start server
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
+export default app;  // <-- replace app.listen() by this
