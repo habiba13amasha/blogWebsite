@@ -5,7 +5,7 @@ export default function Header() {
     <header
       className="relative w-full h-60 md:h-96 bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url(${import.meta.env.BASE_URL}blog2.jpg)`,
+        backgroundImage: `url(/blog2.jpg)`,
         backgroundPosition: "center 30%",
       }}
     >

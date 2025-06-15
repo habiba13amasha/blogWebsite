@@ -3,18 +3,11 @@
   "builds": [
     {
       "src": "Frontend/blogWebsite/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "use": "@vercel/static-build"
     },
     {
       "src": "Backend/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["Backend/**"],
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -24,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Frontend/blogWebsite/dist/index.html"
+      "dest": "/Frontend/blogWebsite/dist/index.html"
     }
   ]
 }

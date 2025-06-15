@@ -2,9 +2,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Api = axios.create({
-  baseURL:  'http://localhost:5000',
-  withCredentials: true
+  baseURL:
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : "https://YOUR-BACKEND-URL.vercel.app",
+  withCredentials: true,
 });
+
 
 Api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
