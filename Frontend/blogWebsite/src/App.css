@@ -20,3 +20,7 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
 }
+
+button{
+    background-color: #F59E0B;
+}
