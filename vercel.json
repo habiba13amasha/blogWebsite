@@ -3,7 +3,8 @@
   "builds": [
     {
       "src": "Frontend/blogWebsite/package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
     },
     {
       "src": "Backend/server.js",
