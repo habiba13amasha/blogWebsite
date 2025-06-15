@@ -1,12 +1,14 @@
 {
   "version": 2,
   "builds": [
-    { 
+    {
       "src": "Frontend/blogWebsite/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": {
+        "distDir": "dist"
+      }
     },
-    { 
+    {
       "src": "Backend/server.js",
       "use": "@vercel/node",
       "config": { "runtime": "nodejs18.x" }
@@ -14,21 +16,12 @@
   ],
   "routes": [
     {
-      "src": "/api/hello",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/users/(.*)",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/posts/(.*)",
+      "src": "/api/(.*)",
       "dest": "Backend/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "Frontend/blogWebsite/dist/$1",
-      "continue": true
+      "dest": "Frontend/blogWebsite/dist/$1"
     }
   ]
 }
