@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "Frontend/package.json", "use": "@vercel/static-build" },
+    { "src": "Backend/server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    {
+      "src": "/users/(.*)",
+      "dest": "Backend/server.js"
+    },
+    {
+      "src": "/posts/(.*)",
+      "dest": "Backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Frontend/$1",
+      "continue": true
+    }
+  ]
+}

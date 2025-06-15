@@ -2,8 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Api = axios.create({
-  baseURL: "http://localhost:5000",
-  withCredentials: true,
+  baseURL: import.meta.env.PROD ? '' : 'http://localhost:5000',
+  withCredentials: true
 });
 
 Api.interceptors.request.use((config) => {
