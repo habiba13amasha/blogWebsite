@@ -5,7 +5,7 @@ const Api = axios.create({
   baseURL:
     import.meta.env.MODE === "development"
       ? "http://localhost:5000"
-      : "https://blog-website-de4g-habibas-projects-2c481812.vercel.app/",
+      : "https://blog-website-de4g-habibas-projects-2c481812.vercel.app",
   withCredentials: true,
 });
 
