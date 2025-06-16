@@ -33,17 +33,17 @@ Api.interceptors.response.use(
 // ========== APIs ========== //
 
 // users
-export const userRegister = (data) => Api.post("/users/register", data);
-export const login = (data) => Api.post("/users/login", data);
-export const logout = () => Api.get("/users/logout");
-export const getProfile = () => Api.get("/users/user-profile");
+export const userRegister = (data) => Api.post("/api/users/register", data);
+export const login = (data) => Api.post("/api/users/login", data);
+export const logout = () => Api.get("/api/users/logout");
+export const getProfile = () => Api.get("/api/users/user-profile");
 
 // posts
-export const getPosts = (page) => Api.get(`/posts?page=${page}`);
-export const getPost = (id) => Api.get(`/posts/${id}`);
-export const createPost = (data) => Api.post("/posts", data);
-export const updatePost = (id, data) => Api.put(`/posts/${id}`, data);
-export const deletePost = (id) => Api.delete(`/posts/${id}`);
+export const getPosts = (page) => Api.get(`/api/posts?page=${page}`);
+export const getPost = (id) => Api.get(`/api/posts/${id}`);
+export const createPost = (data) => Api.post("/api/posts", data);
+export const updatePost = (id, data) => Api.put(`/api/posts/${id}`, data);
+export const deletePost = (id) => Api.delete(`/api/posts/${id}`);
 export const getPostsByCategory = (category,page) =>
-  Api.get(`/posts/category/${category}?page=${page}`);
-export const getLatestPosts = () => Api.get("/posts/latest");
+  Api.get(`/api/posts/category/${category}?page=${page}`);
+export const getLatestPosts = () => Api.get("/api/posts/latest");
