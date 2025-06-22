@@ -17,7 +17,7 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://blog-website-de4g-habibas-projects-2c481812.vercel.app"
+        "https://blog-website-nine-khaki.vercel.app/"
       ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);

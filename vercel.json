@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "builds": [
     {
       "src": "Frontend/blogWebsite/package.json",
@@ -9,19 +9,6 @@
     {
       "src": "Backend/server.js",
       "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/Frontend/blogWebsite/dist/index.html",
-      "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
     }
   ]
 }
