@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "builds": [
     {
       "src": "Frontend/blogWebsite/package.json",
@@ -10,5 +10,9 @@
       "src": "Backend/server.js",
       "use": "@vercel/node"
     }
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/Frontend/blogWebsite/dist/index.html" }
   ]
 }
