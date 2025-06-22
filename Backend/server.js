@@ -48,4 +48,4 @@ app.use("/api/posts", postRoutes);
 // Database connection
 connectDB();
 
-export default app;  // <-- replace app.listen() by this
+export default app;
