@@ -18,7 +18,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Frontend/blogWebsite/dist/$1",
+      "dest": "/Frontend/blogWebsite/dist/index.html",
       "headers": {
         "Cache-Control": "public, max-age=0, must-revalidate"
       }
