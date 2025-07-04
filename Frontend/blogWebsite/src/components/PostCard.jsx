@@ -4,60 +4,77 @@ import { formatDate } from "../formatDate";
 
 function PostCard({ post }) {
   const categoryColors = {
-    Programming: "bg-blue-100 text-blue-800",
-    Lifestyle: "bg-green-100 text-green-800",
-    Beauty: "bg-pink-100 text-pink-800",
-    Fashion: "bg-purple-100 text-purple-800",
-    "Art & Design": "bg-yellow-100 text-yellow-800",
-    Travel: "bg-indigo-100 text-indigo-800",
+    Programming: "from-blue-500 to-blue-600",
+    Lifestyle: "from-green-500 to-green-600",
+    Beauty: "from-pink-500 to-pink-600",
+    Fashion: "from-purple-500 to-purple-600",
+    "Art & Design": "from-yellow-500 to-yellow-600",
+    Travel: "from-indigo-500 to-indigo-600",
   };
+
   return (
-    <article className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white h-full flex flex-col">
-      <div className="relative pt-[56.25%] overflow-hidden">
-        <img
-          src={post.image}
-          alt={post.title}
-          className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-          loading="lazy"
-        />
-        <span
-          style={{ backgroundColor: "#38BDF8" }}
-          className={`text-white font-bold absolute bottom-0 right-0 text-xs px-2 py-1 rounded-3xl ${
-            categoryColors[post.category]
-          }`}
-        >
-          {post.category}
-        </span>
+    <article className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 card-hover animate-fade-in-up">
+      <div className="relative overflow-hidden">
+        <div className="aspect-[16/10] overflow-hidden">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+        </div>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Category Badge */}
+        <div className="absolute top-4 right-4">
+          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${categoryColors[post.category] || 'from-gray-500 to-gray-600'} shadow-lg`}>
+            {post.category}
+          </span>
+        </div>
+
+        {/* Reading Time Badge */}
+        <div className="absolute top-4 left-4">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium text-white bg-black/30 backdrop-blur-sm">
+            {Math.ceil(post.content.length / 200)} min read
+          </span>
+        </div>
       </div>
 
-      <div className="p-5 flex-grow flex flex-col">
-        <h3
-          className="text-xl font-bold mb-2 line-clamp-2"
-          style={{ color: "#1F2937" }}
-        >
-          {post.title}
-        </h3>
-        <p className="mb-4 line-clamp-3 flex-grow" style={{ color: "#1F2937" }}>
-          {post.content}
-        </p>
+      <div className="p-6">
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+            {post.title}
+          </h3>
+          <p className="text-gray-600 line-clamp-3 leading-relaxed">
+            {post.content}
+          </p>
+        </div>
 
-        <div className="flex items-center justify-between mt-auto">
-          <div className="text-sm ">
-            <span style={{ color: "#1F2937" }}>Written By </span>
-            <span className="font-medium " style={{ color: "#1F2937" }}>
-              {post.author?.userName}
-            </span>
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              {post.author?.userName?.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">
+                {post.author?.userName}
+              </p>
+              <time className="text-xs text-gray-500" dateTime={post.createdAt}>
+                {formatDate(post.createdAt)}
+              </time>
+            </div>
           </div>
 
           <Link
             to={`/post/${post._id}`}
-            style={{ backgroundColor: "#F59E0B" }}
-            className="inline-flex items-center px-3 py-1.5  text-white text-sm font-medium rounded-md "
+            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-400 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-500 hover:to-orange-700 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
             aria-label={`Read more about ${post.title}`}
           >
-            Read
+            Read More
             <svg
-              className="ml-1 w-4 h-4"
+              className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -66,18 +83,11 @@ function PostCard({ post }) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M9 5l7 7-7 7"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
           </Link>
         </div>
-
-        <time
-          className="mt-2 text-xs text-gray-400 block"
-          dateTime={post.createdAt}
-        >
-          {formatDate(post.createdAt)}
-        </time>
       </div>
     </article>
   );
